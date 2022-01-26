@@ -32,7 +32,19 @@ const updateWebsite = (req, res, next) => {
     userModel.updateWebsite(req, res, next)
 }
 
+const getSearch = (req, res, next) => {
+    userModel.getSearch(req, res, next)
+}
+
+const copyPassword = (req, res, next) => {
+    userModel.copyPassword(req, res, next)
+}
+
+const syncData = (req, res, next) => {
+    userModel.syncData(req, res, next)
+}
+
 
 module.exports = {
-    register, login, forgotPassword, otp, resetPassword, addWebsite, getWebsite, updateWebsite
+    register, login, forgotPassword, otp, resetPassword, addWebsite, getWebsite, updateWebsite, getSearch, copyPassword, syncData
 }

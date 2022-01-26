@@ -2,12 +2,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    userName: {
+    userId: {
         type: Number,
         unique: true
     },
     password: {
         type: String
+    },
+    resetCount: {
+        type: Number
     }
 })
 
@@ -27,13 +30,13 @@ const websiteSchema = new Schema({
     category: {
         type: String
     },
-    admin: {
+    userId: {
         type: Number
     }
 })
 
 const otpSchema = new Schema({
-    userName: {
+    userId: {
         type: Number,
     },
     otp: {
