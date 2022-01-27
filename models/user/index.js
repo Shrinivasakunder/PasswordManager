@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const schema = require('./schema');
 var fs = require('fs');
-const client = require('twilio')('ACac5cedcef31cc0598231fd0debae01b0', '47aa761095a52c1348b39fbe20440d4d');
+const client = require('twilio')('ACac5cedcef31cc0598231fd0debae01b0', 'd7cef5e879f6bf9a6c9660930957f569');
 require('dotenv').config()
 
 
@@ -55,7 +55,7 @@ const login = (req, res, next) =>{
                     schema.savedPassword.find({userId : user.userId},{ userId:0 })
                     .then(response => {
                         res.json({
-                            status: "Login Successsfull :)\n",
+                            status: "Login Successsfull :)",
                             response
                         })
                         console.log('\nLogin Successfull!...\nToken: ',process.env.TOKEN)
@@ -93,7 +93,7 @@ const forgotPassword = (req, res, next) =>{
                 schema.users.deleteOne({userId : user.userId})
                 .then(() =>{
                     res.json({
-                        message: 'No more resetting password option...User\'s all Data deleted...!'
+                        message: 'Resetting password limit crossed ...User\'s all Data deleted...!'
                     })
                 })
             })
@@ -111,8 +111,7 @@ const forgotPassword = (req, res, next) =>{
                 from: '+18457690979'
             }).then(message => {
                 res.json({
-                    Status: 'OTP Sent....:)\n http://localhost:8000/api/v1/user/otp',
-                    Message: message.body
+                    Status: 'OTP Sent....:)\n        http://localhost:8000/api/v1/user/otp',
                 })
             }).catch((error) =>console.log(error));
         }   
@@ -135,7 +134,7 @@ const otp = (req, res, next) =>{
             schema.otp.deleteOne({userId : data.userId})
             .then(() =>{
                 res.json({
-                    message: 'OTP verification successfull\n http://localhost:8000/api/v1/user/resetPassword'
+                    message: 'OTP verification successfull\n          http://localhost:8000/api/v1/user/resetPassword'
                 })
             })
             
